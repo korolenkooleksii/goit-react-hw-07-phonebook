@@ -10,8 +10,6 @@ import { Container, TitleForm, TitleContacts, Info } from './App.styled';
 
 const App = () => {
   const contacts = useSelector(getContacts);
-  console.log(555);
-  console.log(555);
 
   return (
     <Container>
