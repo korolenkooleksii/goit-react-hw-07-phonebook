@@ -94,9 +94,11 @@ const contactsSlice = createSlice({
       contacts.isLoading = true;
     },
     [deleteContact.fulfilled]({ contacts }, { payload }) {
+      contacts.isLoading = false;
+      contacts.error = null;
       contacts.items = contacts.items.filter(
-        contact=>contact.id !== payload.id
-      )
+        contact => contact.id !== payload.id
+      );
     },
     [deleteContact.error]({ contacts }, { payload }) {
       contacts.isLoading = false;
@@ -107,5 +109,4 @@ const contactsSlice = createSlice({
 
 export const contactsReducer = contactsSlice.reducer;
 
-// export const { addContact, removeContact, filterContacts, filter } =
-//   contactsSlice.actions;
+export const { filter } = contactsSlice.actions;

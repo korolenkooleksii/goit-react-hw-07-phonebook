@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { getContacts, getFilter } from 'redux/selectors';
-import { removeContact } from 'redux/contactsSlice';
+import { deleteContact } from 'redux/operations';
 import { TbPoint } from 'react-icons/tb';
 
 import {
@@ -16,7 +16,7 @@ const ContactsList = () => {
   const visibleContacts = items.filter(el =>
     el.name.toLowerCase().includes(currentFilter.toLowerCase())
   );
-// console.log('visibleContacts - ', visibleContacts);
+
   return (
     <ListContacts>
       {visibleContacts.map(({ name, number, id }) => (
@@ -26,7 +26,7 @@ const ContactsList = () => {
           <ButtonDelete
             type="button"
             onClick={() => {
-              dispatch(removeContact(id));
+              dispatch(deleteContact(id));
             }}
           >
             Delete
