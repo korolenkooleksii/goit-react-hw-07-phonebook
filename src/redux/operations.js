@@ -11,24 +11,36 @@ export const fetchContacts = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await axios.get('/contacts');
-    //   console.log('response - ', response.data);
+      //   console.log('response - ', response.data);
       return response.data;
     } catch (error) {
-        return thunkAPI.rejectWithValue(error.message)
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
-// export const fetchContacts = async () => {
-//     const response = await axios.get('/contacts');
-//     console.log('response - ', response.data);
-//     return response;
-//   };
+export const addContact = createAsyncThunk(
+  'contacts/addContact',
+  async (val, thunkAPI) => {
+    try {
+      const response = await axios.post(`/contacts`, val);
+      console.log('addContact - ', val);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 
-fetchContacts();
-
-/*
-fetchContacts -  (метод GET) запросом. Базовый тип экшена "contacts/fetchAll".
-addContact - (метод POST). Базовый тип экшена "contacts/addContact".
-deleteContact -  (метод DELETE). Базовый тип экшена "contacts/deleteContact".
-*/
+export const deleteContact = createAsyncThunk(
+  'contacts/deleteContact',
+  async (contactId, thunkAPI) => {
+    try {
+      const response = await axios.delete(`/contacts/${contactId}`);
+      console.log('deleteContact - ', contactId);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

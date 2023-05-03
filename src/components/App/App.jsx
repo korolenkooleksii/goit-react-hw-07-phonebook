@@ -3,14 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getContacts } from 'redux/selectors';
 import { fetchContacts } from 'redux/operations';
 
-import ContactForm from '../ContactForm/ContactForm';
-import ContactsList from '../ContactsList/ContactsList';
-import Filter from '../Filter/Filter';
+import ContactForm from 'components/ContactForm/ContactForm';
+import ContactsList from 'components/ContactsList/ContactsList';
+import Filter from 'components/Filter/Filter';
+import Loader from 'components/Loader/Loader';
 
 import { ToastContainer } from 'react-toastify';
 import { Container, TitleForm, TitleContacts, Info } from './App.styled';
-
-// import { fetchAllContacts, postContact, deleteContact } from 'services/contacts-api';
 
 const App = () => {
   const dispatch =  useDispatch()
@@ -33,6 +32,7 @@ const App = () => {
           <Filter />
         </>
       )}
+      {isLoading && !error && <Loader/>}
       <ContactsList />
       <ToastContainer />
     </Container>
