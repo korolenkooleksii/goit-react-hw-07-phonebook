@@ -8,6 +8,8 @@ import Filter from '../Filter/Filter';
 import { ToastContainer } from 'react-toastify';
 import { Container, TitleForm, TitleContacts, Info } from './App.styled';
 
+import { fetchAllContacts, postContact, deleteContact } from 'services/contacts-api';
+
 const App = () => {
   const contacts = useSelector(getContacts);
 
