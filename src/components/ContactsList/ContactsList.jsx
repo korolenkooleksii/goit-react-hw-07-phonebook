@@ -10,10 +10,10 @@ import {
 } from './ContactsList.styled';
 
 const ContactsList = () => {
-  const contacts = useSelector(getContacts);
+  const {items} = useSelector(getContacts);
   const dispatch = useDispatch();
   const currentFilter = useSelector(getFilter);
-  const visibleContacts = contacts.filter(el =>
+  const visibleContacts = items.filter(el =>
     el.name.toLowerCase().includes(currentFilter.toLowerCase())
   );
 // console.log('visibleContacts - ', visibleContacts);

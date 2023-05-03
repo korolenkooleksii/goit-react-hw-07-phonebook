@@ -11,7 +11,7 @@ export const fetchAllContacts = async () => {
   console.log('response - ', response.data);
 };
 
-fetchAllContacts()
+// fetchAllContacts()
 
 // POST request
 const x = {
