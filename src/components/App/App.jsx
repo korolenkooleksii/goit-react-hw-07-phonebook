@@ -12,19 +12,23 @@ import { ToastContainer } from 'react-toastify';
 import { Container, TitleForm, TitleContacts, Info } from './App.styled';
 
 const App = () => {
-  const dispatch =  useDispatch()
-  const {items, isLoading, error} = useSelector(getContacts);
+  const dispatch = useDispatch();
+  const { items, isLoading, error } = useSelector(getContacts);
 
   useEffect(() => {
-    dispatch(fetchContacts())
+    dispatch(fetchContacts());
   }, [dispatch]);
 
   return (
     <Container>
-      <TitleForm>Phonebook</TitleForm>
-      <ContactForm />
+      {!error && (
+        <>
+          <TitleForm>Phonebook</TitleForm>
+          <ContactForm />
+        </>
+      )}
 
-      {!items.length && <Info>No contacts.</Info>}
+      {!items.length && !error &&<Info>No contacts.</Info>}
 
       {items.length > 0 && (
         <>
@@ -32,7 +36,13 @@ const App = () => {
           <Filter />
         </>
       )}
-      {isLoading && !error && <Loader/>}
+      {isLoading && !error && <Loader />}
+
+      {error && <>
+      <p>Error - {error.message}</p>
+      <p>Something went wrong. Use the service in a couple of minutes.</p>
+      </>}
+      
       <ContactsList />
       <ToastContainer />
     </Container>
@@ -40,5 +50,3 @@ const App = () => {
 };
 
 export default App;
-
-
