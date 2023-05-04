@@ -27,9 +27,7 @@ const App = () => {
           <ContactForm />
         </>
       )}
-
-      {!items.length && !error &&<Info>No contacts.</Info>}
-
+      {!items.length && !error && <Info>No contacts.</Info>}
       {items.length > 0 && (
         <>
           <TitleContacts>Contacts</TitleContacts>
@@ -37,12 +35,6 @@ const App = () => {
         </>
       )}
       {isLoading && !error && <Loader />}
-
-      {error && <>
-      <p>Error - {error.message}</p>
-      <p>Something went wrong. Use the service in a couple of minutes.</p>
-      </>}
-      
       <ContactsList />
       <ToastContainer />
     </Container>
