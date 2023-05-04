@@ -17,39 +17,6 @@ const contactsSlice = createSlice({
   name: 'contacts',
   initialState,
   reducers: {
-    // addContact: {
-    //   reducer(state, action) {
-
-    //     const duplicate = state.contacts.items.some(
-    //       contact =>
-    //         contact.name.toLowerCase() ===
-    //         action.payload.name.toLowerCase().trim()
-    //     );
-
-    //     if (duplicate) {
-    //       toast.warn(`${action.payload.name} is already in contacts.`, {
-    //         theme: 'colored',
-    //       });
-    //     } else {
-    //       state.contacts.items.push(action.payload);
-    //     }
-
-    //   },
-    //   prepare({ name, number }) {
-    //     return {
-    //       payload: {
-    //         name,
-    //         number,
-    //         id: nanoid(),
-    //       },
-    //     };
-    //   },
-    // },
-    // removeContact(state, action) {
-    //   state.contacts.items = state.contacts.items.filter(
-    //     contact => contact.id !== action.payload
-    //   );
-    // },
     filter(state, action) {
       state.filter = action.payload;
     },
