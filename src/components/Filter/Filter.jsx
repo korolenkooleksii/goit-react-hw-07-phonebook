@@ -1,12 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { getFilter } from 'redux/selectors';
+import { selectFilter } from 'redux/selectors';
 import { filter } from 'redux/contactsSlice';
 
 import { Wrapper, LabelForm, InputForm } from './Filter.styled';
 
 const Filter = () => {
   const dispatch = useDispatch();
-  const currentFilter = useSelector(getFilter);
+  const currentFilter = useSelector(selectFilter);
   
   return (
     <Wrapper>

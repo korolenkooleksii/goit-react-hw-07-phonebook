@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts } from 'redux/selectors';
+import { selectContacts } from 'redux/selectors';
 import { fetchContacts } from 'redux/operations';
 
 import ContactForm from 'components/ContactForm/ContactForm';
@@ -13,7 +13,7 @@ import { Container, TitleForm, TitleContacts, Info } from './App.styled';
 
 const App = () => {
   const dispatch = useDispatch();
-  const { items, isLoading, error } = useSelector(getContacts);
+  const { items, isLoading, error } = useSelector(selectContacts);
 
   useEffect(() => {
     dispatch(fetchContacts());

@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { getContacts, getFilter } from 'redux/selectors';
+import { selectVisibleContacts } from 'redux/selectors';
 import { deleteContact } from 'redux/operations';
 import { TbPoint } from 'react-icons/tb';
 
@@ -10,16 +10,12 @@ import {
 } from './ContactsList.styled';
 
 const ContactsList = () => {
-  const {items} = useSelector(getContacts);
   const dispatch = useDispatch();
-  const currentFilter = useSelector(getFilter);
-  const visibleContacts = items.filter(el =>
-    el.name.toLowerCase().includes(currentFilter.toLowerCase())
-  );
+  const contacts = useSelector(selectVisibleContacts)
 
   return (
     <ListContacts>
-      {visibleContacts.map(({ name, number, id }) => (
+      {contacts.map(({ name, number, id }) => (
         <ItemContacts key={id}>
           <TbPoint />
           {name}: {number}
